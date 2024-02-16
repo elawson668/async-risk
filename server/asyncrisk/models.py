@@ -7,10 +7,14 @@ db = SQLAlchemy(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return Users.query.get(int(user_id))
 
 
-class User(db.Model, UserMixin):
+class Users(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(24), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
 
     def __repr__(self):
-        return f"User"
+        return f"Users( '{self.username}', '{self.email}')"

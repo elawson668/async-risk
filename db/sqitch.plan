@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=async-risk
+%uri=https://github.com/elawson668/async-risk
+
+appschema 2022-07-09T19:44:49Z Eric Lawson <elawson668@gmail.com> # Add schema for async-risk
+user [appschema] 2023-02-16T16:17:14Z Eric Lawson <elawson668@gmail.com> # add user table
