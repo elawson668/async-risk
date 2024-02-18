@@ -13,15 +13,15 @@ CREATE TABLE asyncrisk.users (
 );
 
 
-CREATE SEQUENCE asyncrisk.user_id_seq
+CREATE SEQUENCE asyncrisk.users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
-ALTER SEQUENCE asyncrisk.user_id_seq OWNED BY asyncrisk.users.id;
-ALTER TABLE ONLY asyncrisk.users ALTER COLUMN id SET DEFAULT nextval('asyncrisk.user_id_seq'::regclass);
+ALTER SEQUENCE asyncrisk.users_id_seq OWNED BY asyncrisk.users.id;
+ALTER TABLE ONLY asyncrisk.users ALTER COLUMN id SET DEFAULT nextval('asyncrisk.users_id_seq'::regclass);
 
 ALTER TABLE ONLY asyncrisk.users
     ADD CONSTRAINT user_pkey PRIMARY KEY (id);

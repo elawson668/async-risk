@@ -3,6 +3,7 @@
 {% block content %}
 
 {% set active_page = "index" %}
+{% include "navigation.html" %}
 
 <p>Risk</p>
     {% if current_user.is_authenticated %}

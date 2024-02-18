@@ -13,7 +13,7 @@ FROM asyncrisk.users
 WHERE FALSE;
 
 SELECT *
-FROM asyncrisk.user_id_seq
+FROM asyncrisk.users_id_seq
 WHERE FALSE;
 
 ROLLBACK;

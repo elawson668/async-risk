@@ -11,6 +11,10 @@ def load_user(user_id):
 
 
 class Users(db.Model, UserMixin):
+    __tablename__ = 'users'
+    __table_args__ = {
+        'schema': 'asyncrisk'
+    }
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(24), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
