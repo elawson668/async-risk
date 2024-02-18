@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% set active_page = "friends" %}
+{% include "navigation.html" %}
+
+    <h2>Friends Requests</h2>
+    <a href="{{ url_for('friends') }}">
+      Back
+    </a>
+
+    <br>
+
+    <h2>Pending Requests Received</h2>
+
+    <table class="data-table">
+        <tr>
+          <th>Username</th>
+          <th></th>
+          <th></th>
+        </tr>
+        {% for u in requests_received %}
+        <tr>
+          <td align="center">{{ u.username }}</td>
+          <td align="center">
+            <a href="{{ url_for('accept_request', user_id=u.id) }}">
+                Accept
+            </a>
+          </td>
+          <td align="center">
+            <a href="{{ url_for('reject_request', user_id=u.id) }}">
+                Reject
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <h2>Pending Requests Sent</h2>
+
+    <table class="data-table">
+        <tr>
+          <th>Username</th>
+          <th></th>
+        </tr>
+        {% for u in requests_sent %}
+        <tr>
+          <td align="center">{{ u.username }}</td>
+        </tr>
+        <td align="center">
+          <a href="{{ url_for('revoke_request', user_id=u.id) }}">
+            Revoke Request
+          </a>
+        </td>
+        {% endfor %}
+    </table>
+
+{% endblock %}

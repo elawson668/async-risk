@@ -2,6 +2,8 @@
 
 BEGIN;
 
+DROP TABLE asyncrisk.requests;
+DROP TABLE asyncrisk.friends;
 DROP TABLE asyncrisk.users;
 
 COMMIT;

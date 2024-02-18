@@ -6,30 +6,38 @@ BEGIN;
 -- USER
 
 CREATE TABLE asyncrisk.users (
-    id integer NOT NULL,
-    username character varying(24) NOT NULL,
-    email character varying(120) NOT NULL,
+    id SERIAL primary key,
+    username character varying(24) NOT NULL UNIQUE,
+    email character varying(120) NOT NULL UNIQUE,
     password character varying(60) NOT NULL
 );
 
+-- FRIENDS
 
-CREATE SEQUENCE asyncrisk.users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+CREATE TABLE asyncrisk.friends (
+    id SERIAL primary key,
+    user_id integer NOT NULL,
+    friend_id integer NOT NULL
+);
 
-ALTER SEQUENCE asyncrisk.users_id_seq OWNED BY asyncrisk.users.id;
-ALTER TABLE ONLY asyncrisk.users ALTER COLUMN id SET DEFAULT nextval('asyncrisk.users_id_seq'::regclass);
+ALTER TABLE ONLY asyncrisk.friends
+ADD CONSTRAINT friends_user_id_fkey FOREIGN KEY (user_id) REFERENCES asyncrisk.users(id);
 
-ALTER TABLE ONLY asyncrisk.users
-    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY asyncrisk.friends
+ADD CONSTRAINT friends_friend_id_fkey FOREIGN KEY (friend_id) REFERENCES asyncrisk.users(id);
 
-ALTER TABLE ONLY asyncrisk.users
-    ADD CONSTRAINT user_email_key UNIQUE (email);
+-- REQUESTS
 
-ALTER TABLE ONLY asyncrisk.users
-    ADD CONSTRAINT user_username_key UNIQUE (username);
+CREATE TABLE asyncrisk.requests (
+    id SERIAL primary key,
+    user_id integer NOT NULL,
+    requester_id integer NOT NULL
+);
+
+ALTER TABLE ONLY asyncrisk.requests
+ADD CONSTRAINT request_user_id_fkey FOREIGN KEY (user_id) REFERENCES asyncrisk.users(id);
+
+ALTER TABLE ONLY asyncrisk.requests
+ADD CONSTRAINT requests_requester_id_fkey FOREIGN KEY (requester_id) REFERENCES asyncrisk.users(id);
 
 COMMIT;

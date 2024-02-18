@@ -27,3 +27,8 @@ def save(record):
 def save_all(records):
     db.session.add_all(records)
 
+
+@db_transaction
+def delete(record):
+    db.session.delete(record)
+
