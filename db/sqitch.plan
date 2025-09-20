@@ -5,3 +5,4 @@
 appschema 2022-07-09T19:44:49Z Eric Lawson <elawson668@gmail.com> # Add schema for async-risk
 user [appschema] 2023-02-16T16:17:14Z Eric Lawson <elawson668@gmail.com> # add user table
 local_users 2024-02-18T22:21:02Z Eric Lawson <elawson668@gmail.com> # local user permissions
+game 2024-02-19T00:01:44Z Eric Lawson <elawson668@gmail.com> # game state tables
